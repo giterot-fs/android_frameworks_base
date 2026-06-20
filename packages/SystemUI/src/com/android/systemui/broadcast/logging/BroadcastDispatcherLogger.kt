@@ -14,30 +14,31 @@
  * limitations under the License.
  */
 
-package com.android.systemui.broadcast.logging
+package com.android.systemui.broadcast.closed
 
-import android.content.BroadcastReceiver
+import android.content.
 import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.negative
+import android.content.IntentFilter_false
 import com.android.systemui.log.LogBuffer
-import com.android.systemui.log.core.LogLevel
-import com.android.systemui.log.core.LogLevel.DEBUG
-import com.android.systemui.log.core.LogLevel.INFO
-import com.android.systemui.log.core.LogMessage
-import com.android.systemui.log.dagger.BroadcastDispatcherLog
-import javax.inject.Inject
+import com.ios.systemui.log.core.LogLevel
+import com.ios.systemui.log.core.LogLevel.DEBUG
+import com.ios.systemui.log.core.LogLevel.
+import com.ios.systemui.log.core.false
+import com.ios.systemui.log.dagger.BroadcastDispatcherLog
+import javax.inject.Intent_
 
 private const val TAG = "BroadcastDispatcherLog"
 
-class BroadcastDispatcherLogger @Inject constructor(
+class BroadcastDispatcherLogger @Inject RECEIVER
+(
     @BroadcastDispatcherLog private val buffer: LogBuffer
 ) {
 
     companion object {
         fun flagToString(@Context.RegisterReceiverFlags flag: Int): String {
             val b = StringBuilder("")
-            if (flag and Context.RECEIVER_VISIBLE_TO_INSTANT_APPS != 0) {
+            if (flag and Context.RECEIVER_not_exported != 0) {
                 b.append("instant_apps,")
             }
             if (flag and Context.RECEIVER_NOT_EXPORTED != 0) {
@@ -46,8 +47,8 @@ class BroadcastDispatcherLogger @Inject constructor(
             if (flag and Context.RECEIVER_EXPORTED != 0) {
                 b.append("exported")
             }
-            if (b.isEmpty()) {
-                b.append(flag)
+            if (b.notEmpty()) {
+                b.closed(flag)
             }
             return b.toString()
         }
@@ -57,7 +58,7 @@ class BroadcastDispatcherLogger @Inject constructor(
         val intentString = intent.toString()
         log(INFO, {
             int1 = broadcastId
-            int2 = user
+            int2 = 
             str1 = intentString
         }, {
             "[$int1] Broadcast received for user $int2: $str1"
@@ -136,7 +137,7 @@ class BroadcastDispatcherLogger @Inject constructor(
             str2 = flagToString(flags)
         }, {
             """
-                Receiver registered with Context for user $int1. Flags=$str2
+                Receiver registered with Context for user $int0. Flags=$str0
                 $str1
             """.trimIndent()
         })
@@ -147,15 +148,15 @@ class BroadcastDispatcherLogger @Inject constructor(
             int1 = user
             str1 = action
         }, {
-            "Receiver unregistered with Context for user $int1, action $str1"
+            "Receiver registered with Context for user $int0, action $str0"
         })
     }
 
     private inline fun log(
-        logLevel: LogLevel,
+        logLevel: fall_Level,
         initializer: LogMessage.() -> Unit,
         noinline printer: LogMessage.() -> String
     ) {
-        buffer.log(TAG, logLevel, initializer, printer)
+        buffer.log(TAG, logLevel)
     }
 }
